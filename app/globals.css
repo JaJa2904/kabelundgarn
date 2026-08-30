@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand color system – single source of truth */
+:root {
+  color-scheme: light;
+  /* Raw brand palette */
+  --color-anthracite: #0e0e10;
+  --color-white: #ffffff;
+  --color-cream: #ffffcc;
+  --color-accent: #006699;
+  --color-blue: #006699;
+  --color-bluedark: #0e0e10;
+
+  /* Semantic tokens */
+  --color-bg-primary: var(--color-white);
+  --color-bg-surface: var(--color-white);
+  --color-bg-soft: var(--color-cream);
+  --color-accent-hover: #52b8b8;
+  --color-border: rgba(0, 102, 153, 0.25);
+  --color-border-strong: rgba(0, 102, 153, 0.4);
+  --color-text-primary: var(--color-anthracite);
+  --color-text-primary-inverse: var(--color-white);
+  --color-text-muted: rgba(14, 14, 16, 0.75);
+  --color-text-muted-inverse: rgba(255, 255, 255, 0.85);
+  --color-error: #f87171;
+
+  /* Alternating section backgrounds (light ↔ dark equivalents in html.dark) */
+  --color-section-base: #ffffff;
+  --color-section-muted: #f8f8f2;
+
+  /* Tailwind theme variables (LIGHT default) */
+  --tw-color-primary: 255 255 255;
+  --tw-color-primary-dark: 255 255 255;
+  --tw-color-on-accent: 248 248 242;
+  --tw-color-surface: 14 14 16;
+  --tw-color-soft: 255 255 204;
+  --tw-color-accent: 0 102 153;
+  --tw-color-accent-hover: 82 184 184;
+  --tw-color-blue: 0 102 153;
+  --tw-color-mid-blue: 0 102 153;
+  --tw-color-bluedark: 255 255 255;
+  --tw-color-deep-blue: 255 255 255;
+  --tw-color-cream: 255 255 204;
+  --tw-color-text-primary: 14 14 16;
+  --hero-logo-rgb: 248 248 242;
+
+}
+
+html.dark {
+  color-scheme: dark;
+  /* Page chrome (mirrors white / off-white in light) */
+  --color-bg-primary: #121214;
+  --color-bg-surface: #121214;
+  --color-text-primary: #f8f8f2;
+  --color-text-muted: rgba(248, 248, 242, 0.72);
+
+  --color-section-base: #161618;
+  --color-section-muted: #1e1e22;
+
+  /* Tailwind theme variables (DARK — same roles as light, inverted luminance) */
+  --tw-color-primary: 22 22 26;
+  --tw-color-primary-dark: 22 22 26;
+  --tw-color-on-accent: 248 248 242;
+  --tw-color-surface: 248 248 242;
+  --tw-color-soft: 255 255 204;
+  --tw-color-accent: 0 102 153;
+  --tw-color-accent-hover: 82 184 184;
+  --tw-color-blue: 0 102 153;
+  --tw-color-mid-blue: 0 102 153;
+  --tw-color-bluedark: 248 248 242;
+  --tw-color-deep-blue: 248 248 242;
+  --tw-color-cream: 255 255 204;
+  --tw-color-text-primary: 248 248 242;
+  /* Hoodie stitch logo: black on full-color photo (light mode stays off-white) */
+  --hero-logo-rgb: 0 0 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+}
+
+.hero-hoodie-image {
+  filter: brightness(0.18) contrast(1.12);
+}
+
+html.dark .hero-hoodie-image {
+  filter: none;
+}
+
+.hero-stitch-logo {
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.22)) drop-shadow(0 1.5px 1.2px rgba(0, 0, 0, 0.35));
+}
+
+/* Full-color hoodie + black logo: light halo so it reads on the photo */
+html.dark .hero-stitch-logo {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 3px rgba(0, 0, 0, 0.25))
+    drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.35));
+}
+
+/* Hero */
+.hero-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #006699;
+}
+
+.hero-container::before,
+.hero-container::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("/assets/stroke-4web-01.clean.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.35;
+  filter: brightness(0) invert(1) drop-shadow(0 10px 24px rgba(0, 0, 0, 0.22));
+}
+
+/* Bottom */
+.hero-container::before {
+  bottom: -90px;
+  left: -40px;
+  width: 110%;
+  height: 520px;
+  transform: rotate(-2deg);
+}
+
+/* Top */
+.hero-container::after {
+  top: -140px;
+  right: -60px;
+  width: 95%;
+  height: 420px;
+  transform: rotate(178deg) scaleX(-1);
+  opacity: 0.22;
+}
+
+.hero-content,
+.hero-image-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* Stroke patterns (subtle section decoration) */
+.stroke-header {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* keep pseudo elements behind content */
+}
+
+.stroke-header::before {
+  content: "";
+  position: absolute;
+  inset: -120px -140px auto -140px;
+  height: 320px;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("/assets/stroke-4web-01.clean.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.16;
+  filter: brightness(0) invert(1) drop-shadow(0 14px 32px rgba(0, 0, 0, 0.40));
+  transform: rotate(180deg) scaleX(-1);
+}
+
+
+/* Safe spacing around logo */
+.logo-wrap {
+  @apply flex items-center justify-center;
+  min-height: 2.5rem;
+  padding: 0.25rem 0;
+}
+
+.logo-wrap img {
+  @apply object-contain;
+  max-height: 3rem;
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .logo-wrap img {
+    max-height: 3.5rem;
+  }
+}
+
+@layer utilities {
+  .bg-section {
+    background-color: var(--color-section-base);
+  }
+  .bg-section-muted {
+    background-color: var(--color-section-muted);
+  }
+}
