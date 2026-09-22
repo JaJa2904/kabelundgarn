@@ -109,36 +109,18 @@ html.dark .hero-stitch-logo {
   background-color: #006699;
 }
 
-.hero-container::before,
-.hero-container::after {
+.hero-container::before {
   content: "";
   position: absolute;
   pointer-events: none;
   z-index: 1;
-  background-image: url("/assets/stroke-4web-01.clean.svg");
+  background-image: url("/assets/herosectionStrings.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 0.35;
-  filter: brightness(0) invert(1) drop-shadow(0 10px 24px rgba(0, 0, 0, 0.22));
-}
-
-/* Bottom */
-.hero-container::before {
   bottom: -90px;
   left: -40px;
   width: 110%;
   height: 520px;
-  transform: rotate(-2deg);
-}
-
-/* Top */
-.hero-container::after {
-  top: -140px;
-  right: -60px;
-  width: 95%;
-  height: 420px;
-  transform: rotate(178deg) scaleX(-1);
-  opacity: 0.22;
 }
 
 .hero-content,
@@ -161,7 +143,7 @@ html.dark .hero-stitch-logo {
   height: 320px;
   pointer-events: none;
   z-index: 0;
-  background-image: url("/assets/stroke-4web-01.clean.svg");
+  background-image: url("/assets/herosectionStrings.svg");
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.16;

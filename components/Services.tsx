@@ -32,7 +32,7 @@ export function Services({ locale }: { locale: Locale }) {
 
       <SectionWaveDivider
         nextBg="section-muted"
-        variant="flow"
+        variant={2}
         className={SECTION_WAVE_DIVIDER_MT}
       />
     </Section>

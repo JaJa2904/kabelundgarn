@@ -4,7 +4,6 @@ import { locales, type Locale } from "@/lib/translations";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ContactSection } from "@/components/ContactSection";
-import { SECTION_WAVE_DIVIDER_MT, SectionWaveDivider } from "@/components/SectionWaveDivider";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -43,11 +42,6 @@ export default async function LocaleLayout({
     <>
       <Header locale={locale as Locale} />
       <main className="flex-1">{children}</main>
-      <SectionWaveDivider
-        nextBg="accent"
-        variant="flow"
-        className={SECTION_WAVE_DIVIDER_MT}
-      />
       <ContactSection locale={locale as Locale} />
       <Footer locale={locale as Locale} />
     </>

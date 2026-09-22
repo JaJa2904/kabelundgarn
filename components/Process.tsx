@@ -32,7 +32,7 @@ export function Process({ locale }: { locale: Locale }) {
 
       <SectionWaveDivider
         nextBg="section"
-        variant="weave"
+        variant={3}
         className={SECTION_WAVE_DIVIDER_MT}
       />
     </Section>

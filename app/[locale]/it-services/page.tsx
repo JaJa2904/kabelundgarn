@@ -77,7 +77,7 @@ export default async function ITServicesPage({
 
       <SectionWaveDivider
         nextBg="primaryDark"
-        variant="weave"
+        variant={2}
         className={SECTION_WAVE_DIVIDER_MT}
       />
     </Section>
